@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Maa Enterprises — Cyber Cafe &amp; Online Service Center | Bihar Sharif</title>
+<meta content="Maa Enterprises Cyber Cafe &amp; Online Service Center in Mahalpar, Bihar Sharif. Access online forms, certificate applications, identity services, request tracking, and custom resume builder." name="description"/>
+<meta content="Maa Enterprises, Cyber Cafe, Online Service Center, Bihar Sharif, Nalanda, Online Forms, Resume Maker, Application Tracking" name="keywords"/>
+<meta content="Maa Enterprises" name="author"/>
+<!-- Favicon -->
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<!-- Google Fonts: Poppins (Heading) & Roboto (Body) -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Production Stylesheet -->
+<link href="css/global.css" rel="stylesheet"/>
+  <link href="css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<!-- Accessibility Skip Link -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- Ambient Glowing Background Canvas -->
+<div aria-hidden="true" class="bg-ambient-layer">
+<div class="ambient-grid"></div>
+<div class="ambient-orb orb-1"></div>
+<div class="ambient-orb orb-2"></div>
+<div class="ambient-orb orb-3"></div>
+</div>
+<!-- Toast Container -->
+<div aria-atomic="true" aria-live="polite" class="toast-container" id="toastContainer"></div>
+<!-- =========================================================================
+       Site Header / Navigation
+       ========================================================================= -->
+<header class="site-header" id="siteHeader">
+<div class="container nav-container">
+<!-- Brand Logo -->
+<a aria-label="Maa Enterprises Homepage" class="brand" href="index.html">
+<div class="brand-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</div>
+<div class="brand-info">
+<span class="brand-name">Maa Enterprises</span>
+<span class="brand-badge">Cyber Cafe &amp; Online Service Center</span>
+</div>
+</a>
+<!-- Desktop Navigation Menu -->
+<nav aria-label="Primary Navigation" class="desktop-nav">
+<a class="nav-link active" href="index.html">Home</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="resume-maker.html">Resume Maker</a>
+<a class="nav-link" href="track-request.html">Track Request</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</nav>
+<!-- Header Actions -->
+<div class="header-actions">
+<a class="btn btn-admin header-admin-btn" href="login.html">
+<svg fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;" viewbox="0 0 24 24"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+<span>Admin Portal</span>
+</a>
+<!-- Mobile Hamburger Button -->
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation menu" class="nav-toggle" id="navToggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Mobile Navigation Drawer Backdrop -->
+<div aria-hidden="true" class="mobile-nav-backdrop" id="navBackdrop"></div>
+<!-- Mobile Navigation Drawer -->
+<aside aria-hidden="true" aria-label="Mobile Navigation" class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-header">
+<div class="brand-info">
+<span class="brand-name">Maa Enterprises</span>
+<span class="brand-badge">Cyber Cafe &amp; Service Center</span>
+</div>
+<button aria-label="Close navigation menu" class="mobile-menu-close" id="navClose">×</button>
+</div>
+<nav class="mobile-nav-links">
+<a class="mobile-nav-link active" href="index.html">Home</a>
+<a class="mobile-nav-link" href="services.html">Services Catalog</a>
+<a class="mobile-nav-link" href="resume-maker.html">Resume Maker</a>
+<a class="mobile-nav-link" href="track-request.html">Track Application</a>
+<a class="mobile-nav-link" href="contact.html">Contact Center</a>
+<a class="mobile-nav-link" href="login.html">Admin Portal</a>
+</nav>
+<div class="mobile-menu-footer">
+<div class="mobile-contact-pill">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span>Mahalpar, Bihar Sharif - 803101</span>
+</div>
+<div class="mobile-contact-pill">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>10:00 AM – 06:00 PM</span>
+</div>
+<a class="btn btn-whatsapp btn-sm" href="https://wa.me/919693125648" rel="noopener noreferrer" style="width: 100%; margin-top: 0.5rem;" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        WhatsApp Us
+      </a>
+</div>
+</aside>
+<!-- =========================================================================
+       Main Content
+       ========================================================================= -->
+<main id="main-content">
+<!-- 1. Hero Section -->
+<section class="hero-section" id="hero">
+<div class="container">
+<div class="hero-grid">
+<!-- Hero Text Content -->
+<div class="hero-content reveal">
+<div class="hero-badge">
+<span class="pulse-dot"></span>
+<span>Open Today • 10:00 AM – 06:00 PM</span>
+</div>
+<h1 class="hero-title">
+              Online Services <span class="gradient-text">Made Simple</span>
+</h1>
+<p class="hero-description">
+              Maa Enterprises brings essential cyber cafe and digital online services under one organized portal. Submit application requests, track progress transparently, and build professional resumes with ease.
+            </p>
+<div class="hero-actions">
+<a class="btn btn-primary" href="services.html">
+<span>Explore Services</span>
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</a>
+<a class="btn btn-secondary" href="track-request.html">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+<span>Track Application</span>
+</a>
+<a aria-label="Chat on WhatsApp" class="btn btn-whatsapp" href="https://wa.me/919693125648" rel="noopener noreferrer" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+<span>WhatsApp</span>
+</a>
+</div>
+<div class="hero-contact-row">
+<a class="hero-contact-item" href="tel:9693125648">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<span>+91 96931 25648</span>
+</a>
+<span class="hero-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span>Mahalpar, Bihar Sharif - 803101</span>
+</span>
+</div>
+</div>
+<!-- Hero Pure CSS Visual Composition -->
+<div aria-hidden="true" class="hero-visual-wrapper reveal reveal-right delay-200">
+<div class="hero-visual-canvas">
+<!-- Floating Card 1: Document Processing -->
+<div class="floating-card float-card-1">
+<div class="float-icon icon-doc">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+</div>
+<div class="float-meta">
+<span class="float-label">Document Service</span>
+<span class="float-sub">WhatsApp Verification</span>
+</div>
+</div>
+<!-- Main Dashboard Card -->
+<div class="hero-main-card">
+<div class="hero-card-header">
+<span class="hero-card-title">
+<svg fill="none" height="18" stroke="currentColor" stroke-width="2" style="color: var(--accent-cyan);" viewbox="0 0 24 24" width="18"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+                    Service Portal Workflow
+                  </span>
+<span class="status-pill">Active System</span>
+</div>
+<div class="hero-card-body">
+<div class="mock-timeline-item">
+<div class="mock-dot">1</div>
+<div class="mock-content">
+<span class="mock-title">Choose Service Category</span>
+<span class="mock-desc">Select forms, certificates or identity requests</span>
+</div>
+</div>
+<div class="mock-timeline-item">
+<div class="mock-dot">2</div>
+<div class="mock-content">
+<span class="mock-title">Submit Details &amp; Documents</span>
+<span class="mock-desc">Direct submission with WhatsApp verification</span>
+</div>
+</div>
+<div class="mock-timeline-item">
+<div class="mock-dot">3</div>
+<div class="mock-content">
+<span class="mock-title">Track Live Milestone</span>
+<span class="mock-desc">Instant status updates via Request ID</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Card 2: Resume Maker Pill -->
+<div class="floating-card float-card-2">
+<div class="float-icon icon-cv">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+</div>
+<div class="float-meta">
+<span class="float-label">Resume Maker</span>
+<span class="float-sub">A4 PDF Template Export</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Trust / Quick Information Section -->
+<section class="trust-section" id="quick-info">
+<div class="container">
+<div class="trust-grid">
+<div class="trust-card reveal">
+<div class="trust-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+</div>
+<div class="trust-text">
+<span class="trust-title">Online Service Center</span>
+<span class="trust-subtitle">Cyber cafe &amp; digital workflow</span>
+</div>
+</div>
+<div class="trust-card reveal delay-100">
+<div class="trust-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg>
+</div>
+<div class="trust-text">
+<span class="trust-title">Easy Application Process</span>
+<span class="trust-subtitle">Structured, guided steps</span>
+</div>
+</div>
+<div class="trust-card reveal delay-200">
+<div class="trust-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+</div>
+<div class="trust-text">
+<span class="trust-title">WhatsApp Assistance</span>
+<span class="trust-subtitle">Direct line: 9693125648</span>
+</div>
+</div>
+<div class="trust-card reveal delay-300">
+<div class="trust-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+</div>
+<div class="trust-text">
+<span class="trust-title">Resume Maker</span>
+<span class="trust-subtitle">Modern A4 templates</span>
+</div>
+</div>
+<div class="trust-card reveal delay-400">
+<div class="trust-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+</div>
+<div class="trust-text">
+<span class="trust-title">Application Tracking</span>
+<span class="trust-subtitle">Track via Request ID</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Services Preview Section -->
+<section class="section" id="services-preview">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+<span>Service Catalog Preview</span>
+</div>
+<h2 class="section-title">Popular <span class="gradient-text">Online Services</span></h2>
+<p class="section-subtitle">
+            Explore key service categories handled at our digital center. The full dynamic catalog will be interactive in the upcoming release.
+          </p>
+</div>
+<!-- 6 Generic Category Preview Cards -->
+<div class="services-grid" id="homeFeaturedServicesGrid">
+<!-- Dynamically Rendered by js/services.js / Firestore -->
+<div style="grid-column: 1 / -1; text-align: center; color: var(--text-secondary); padding: 2rem;">
+<span class="spinner" style="display: inline-block; margin-right: 0.5rem;"></span> Loading live cyber cafe services...
+      </div>
+</div>
+<div class="services-footer-cta reveal">
+<a class="btn btn-outline" href="services.html">
+<span>Explore All Service Categories</span>
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</div>
+</section>
+<!-- 4. How It Works Section -->
+<section class="section" id="how-it-works" style="background: rgba(10, 18, 38, 0.4);">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+<span>Simple Workflow</span>
+</div>
+<h2 class="section-title">How It <span class="gradient-text">Works</span></h2>
+<p class="section-subtitle">
+            A transparent four-step process to get your cyber cafe and online service requests completed efficiently.
+          </p>
+</div>
+<div class="steps-grid">
+<!-- Step 1 -->
+<div class="step-card reveal">
+<div class="step-header">
+<span class="step-number">01</span>
+<div class="step-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+</div>
+</div>
+<h3 class="step-title">Choose a Service</h3>
+<p class="step-desc">
+              Browse our service categories or consult directly with us to identify the exact form or certificate you need.
+            </p>
+</div>
+<!-- Step 2 -->
+<div class="step-card reveal delay-100">
+<div class="step-header">
+<span class="step-number">02</span>
+<div class="step-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+</div>
+</div>
+<h3 class="step-title">Submit Your Request</h3>
+<p class="step-desc">
+              Provide basic applicant details through our simple submission form to generate an organized request record.
+            </p>
+</div>
+<!-- Step 3 -->
+<div class="step-card reveal delay-200">
+<div class="step-header">
+<span class="step-number">03</span>
+<div class="step-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+</div>
+</div>
+<h3 class="step-title">Send Documents</h3>
+<p class="step-desc">
+              Share required supporting photos, certificates, or identity files via our official WhatsApp channel for verification.
+            </p>
+</div>
+<!-- Step 4 -->
+<div class="step-card reveal delay-300">
+<div class="step-header">
+<span class="step-number">04</span>
+<div class="step-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+</div>
+<h3 class="step-title">Track Your Request</h3>
+<p class="step-desc">
+              Use your unique Request ID to track submission milestones online and receive your acknowledgment receipt.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Resume Maker Promotional Section -->
+<section class="section" id="resume-promo">
+<div class="container">
+<div class="resume-promo-card reveal">
+<div class="resume-promo-grid">
+<!-- Left Promo Details -->
+<div class="resume-promo-content">
+<div class="section-tag" style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.35); color: #c4b5fd;">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+<span>Interactive Tool Feature</span>
+</div>
+<h2 class="section-title">
+                Build Your Resume <span class="gradient-text">Your Way</span>
+</h2>
+<p class="section-subtitle">
+                Maa Enterprises will feature an intuitive, in-house Resume Maker designed to help job seekers, students, and professionals create clean, ATS-compliant resumes with instant A4 PDF export.
+              </p>
+<div class="resume-feature-list">
+<div class="resume-feature-item">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span>Multiple Professional Templates</span>
+</div>
+<div class="resume-feature-item">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span>Structured Education &amp; Skills</span>
+</div>
+<div class="resume-feature-item">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span>Personal Details &amp; Photo Upload</span>
+</div>
+<div class="resume-feature-item">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span>Work Experience &amp; Projects</span>
+</div>
+<div class="resume-feature-item">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span>Custom Color &amp; Font Styling</span>
+</div>
+<div class="resume-feature-item">
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+<span>High-Quality A4 PDF Export</span>
+</div>
+</div>
+<div style="margin-top: 0.5rem;">
+<a class="btn btn-primary" href="resume-maker.html">
+<span>Explore Resume Maker</span>
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><line x1="5" x2="19" y1="12" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+</a>
+</div>
+</div>
+<!-- Right Mock Resume Visual (Generic Fictional Placeholder Data) -->
+<div aria-hidden="true" class="resume-mock-wrapper">
+<div class="mock-resume-sheet">
+<span class="mock-sheet-badge">A4 PDF Ready</span>
+<div class="mock-sheet-header">
+<div class="mock-sheet-name">Alex Morgan</div>
+<div class="mock-sheet-role">Frontend &amp; UI Developer</div>
+<div class="mock-sheet-contact">alex.sample@email.com • +91 98765 43210 (Preview)</div>
+</div>
+<div class="mock-sheet-section-title">Professional Summary</div>
+<div class="mock-sheet-line"></div>
+<div class="mock-sheet-line medium"></div>
+<div class="mock-sheet-section-title">Education</div>
+<div class="mock-sheet-line medium"></div>
+<div class="mock-sheet-line short"></div>
+<div class="mock-sheet-section-title">Technical Skills</div>
+<div style="display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 0.5rem;">
+<span style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 600;">HTML5 / CSS3</span>
+<span style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 600;">JavaScript</span>
+<span style="background: #e2e8f0; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: 600;">UI Design</span>
+</div>
+<div class="mock-sheet-section-title">Experience &amp; Projects</div>
+<div class="mock-sheet-line"></div>
+<div class="mock-sheet-line medium"></div>
+<div class="mock-sheet-line short"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Why Choose Us Section -->
+<section class="section" id="why-choose-us">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+<span>Key Advantages</span>
+</div>
+<h2 class="section-title">Why Choose <span class="gradient-text">Maa Enterprises</span></h2>
+<p class="section-subtitle">
+            Reliable, organized, and straightforward digital assistance tailored for the community in Bihar Sharif.
+          </p>
+</div>
+<div class="benefits-grid">
+<div class="benefit-card reveal">
+<div class="benefit-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+</div>
+<h3 class="benefit-title">Simple Process</h3>
+<p class="benefit-desc">
+              Straightforward application workflows without confusing procedures or unnecessary steps.
+            </p>
+</div>
+<div class="benefit-card reveal delay-100">
+<div class="benefit-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+</div>
+<h3 class="benefit-title">Helpful Assistance</h3>
+<p class="benefit-desc">
+              Personalized guidance on document requirements, eligibility criteria, and form specifications.
+            </p>
+</div>
+<div class="benefit-card reveal delay-200">
+<div class="benefit-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" x2="8" y1="13" y2="13"></line><line x1="16" x2="8" y1="17" y2="17"></line></svg>
+</div>
+<h3 class="benefit-title">Organized Requests</h3>
+<p class="benefit-desc">
+              Every customer submission receives a tracked ticket for neat documentation and clear record keeping.
+            </p>
+</div>
+<div class="benefit-card reveal delay-100">
+<div class="benefit-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" x2="16.65" y1="21" y2="16.65"></line></svg>
+</div>
+<h3 class="benefit-title">Easy Tracking</h3>
+<p class="benefit-desc">
+              Check real-time application processing stages online anytime without repeated center visits.
+            </p>
+</div>
+<div class="benefit-card reveal delay-200">
+<div class="benefit-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="14" rx="2" ry="2" width="20" x="2" y="3"></rect><line x1="8" x2="16" y1="21" y2="21"></line><line x1="12" x2="12" y1="17" y2="21"></line></svg>
+</div>
+<h3 class="benefit-title">Resume Creation</h3>
+<p class="benefit-desc">
+              Dedicated in-house resume formatting with modern templates tailored for students and professionals.
+            </p>
+</div>
+<div class="benefit-card reveal delay-300">
+<div class="benefit-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+</div>
+<h3 class="benefit-title">WhatsApp Communication</h3>
+<p class="benefit-desc">
+              Direct document transmission and status notifications through our official WhatsApp line.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. FAQ Preview Section -->
+<section class="section" id="faq" style="background: rgba(10, 18, 38, 0.4);">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-tag">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" x2="12.01" y1="17" y2="17"></line></svg>
+<span>Questions &amp; Answers</span>
+</div>
+<h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+<p class="section-subtitle">
+            Quick answers about applying for services, submitting documentation, and tracking status.
+          </p>
+</div>
+<div class="faq-container">
+<!-- FAQ 1 -->
+<div class="faq-item reveal">
+<button aria-controls="faq-ans-1" aria-expanded="false" class="faq-question" type="button">
+<span>How can I apply for an online service?</span>
+<span class="faq-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div class="faq-answer" id="faq-ans-1" role="region">
+<div class="faq-answer-inner">
+                You can browse available service categories under the Services section, select the required service, and submit your basic applicant information. You will receive a unique Request ID upon submission.
+              </div>
+</div>
+</div>
+<!-- FAQ 2 -->
+<div class="faq-item reveal delay-100">
+<button aria-controls="faq-ans-2" aria-expanded="false" class="faq-question" type="button">
+<span>How do I send my required documents?</span>
+<span class="faq-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div class="faq-answer" id="faq-ans-2" role="region">
+<div class="faq-answer-inner">
+                After submitting your request on the portal, you can share clear photos or PDF copies of your required documents via our official WhatsApp number (9693125648) along with your Request ID.
+              </div>
+</div>
+</div>
+<!-- FAQ 3 -->
+<div class="faq-item reveal delay-200">
+<button aria-controls="faq-ans-3" aria-expanded="false" class="faq-question" type="button">
+<span>How can I track my application status?</span>
+<span class="faq-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div class="faq-answer" id="faq-ans-3" role="region">
+<div class="faq-answer-inner">
+                Visit the Track Application page, enter your assigned Request ID or mobile number, and view real-time processing milestones from review to final completion.
+              </div>
+</div>
+</div>
+<!-- FAQ 4 -->
+<div class="faq-item reveal delay-100">
+<button aria-controls="faq-ans-4" aria-expanded="false" class="faq-question" type="button">
+<span>Can I create and download a resume here?</span>
+<span class="faq-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div class="faq-answer" id="faq-ans-4" role="region">
+<div class="faq-answer-inner">
+                Yes! Our Resume Maker lets you enter your education, skills, and experience, choose a modern layout, and download a ready-to-print A4 PDF directly to your device.
+              </div>
+</div>
+</div>
+<!-- FAQ 5 -->
+<div class="faq-item reveal delay-200">
+<button aria-controls="faq-ans-5" aria-expanded="false" class="faq-question" type="button">
+<span>How can I contact Maa Enterprises directly?</span>
+<span class="faq-icon">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24" width="14"><polyline points="6 9 12 15 18 9"></polyline></svg>
+</span>
+</button>
+<div class="faq-answer" id="faq-ans-2" role="region">
+<div class="faq-answer-inner">
+                You can reach us by phone or WhatsApp at 9693125648, or visit our cyber cafe center located at Mahalpar, Bihar Sharif, Nalanda, Bihar - 803101 during our business hours (10:00 AM – 06:00 PM).
+              </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Final CTA Banner Section -->
+<section class="section" id="cta">
+<div class="container">
+<div class="cta-banner reveal">
+<div class="cta-content">
+<h2 class="cta-title">Need an Online Service?</h2>
+<p class="cta-desc">
+              Visit our center in Mahalpar, Bihar Sharif, or start your request online right now with instant WhatsApp assistance.
+            </p>
+<div class="cta-actions">
+<a class="btn btn-primary" href="services.html">
+<span>Explore Services</span>
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</a>
+<a class="btn btn-whatsapp" href="https://wa.me/919693125648" rel="noopener noreferrer" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+<span>Chat on WhatsApp</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- =========================================================================
+       Site Footer
+       ========================================================================= -->
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<!-- Column 1: Brand & Bio -->
+<div class="footer-col">
+<div class="brand">
+<div class="brand-icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</div>
+<div class="brand-info">
+<span class="brand-name">Maa Enterprises</span>
+<span class="brand-badge">Cyber Cafe &amp; Online Services</span>
+</div>
+</div>
+<p class="footer-brand-desc">
+            Your neighborhood cyber cafe and online service facilitation center, providing transparent form processing and digital assistance.
+          </p>
+<div class="footer-timing-badge">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>Timing: 10:00 AM – 06:00 PM</span>
+</div>
+</div>
+<!-- Column 2: Quick Links -->
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<ul class="footer-links">
+<li><a class="footer-link" href="index.html">Home</a></li>
+<li><a class="footer-link" href="services.html">Services</a></li>
+<li><a class="footer-link" href="track-request.html">Track Application</a></li>
+<li><a class="footer-link" href="resume-maker.html">Resume Maker</a></li>
+<li><a class="footer-link" href="contact.html">Contact Us</a></li>
+<li><a class="footer-link" href="login.html" style="color: #c4b5fd;">Admin Portal</a></li>
+</ul>
+</div>
+<!-- Column 3: Contact Details -->
+<div class="footer-col">
+<h4 class="footer-col-title">Business Information</h4>
+<ul class="footer-contact-list">
+<li class="footer-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+<span><strong>Owner:</strong> Rajesh Kumar</span>
+</li>
+<li class="footer-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span>Mahalpar, Bihar Sharif, Nalanda, Bihar - 803101</span>
+</li>
+<li class="footer-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<a href="tel:9693125648" style="color: var(--accent-cyan);">+91 96931 25648</a>
+</li>
+</ul>
+</div>
+<!-- Column 4: Quick WhatsApp Contact -->
+<div class="footer-col">
+<h4 class="footer-col-title">Instant Support</h4>
+<p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">
+            Have questions about a form or need immediate help with document verification?
+          </p>
+<a class="btn btn-whatsapp btn-sm" href="https://wa.me/919693125648" rel="noopener noreferrer" style="width: fit-content; margin-top: 0.25rem;" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Chat on WhatsApp
+          </a>
+</div>
+</div>
+<!-- Footer Bottom & Disclaimer -->
+<div class="footer-bottom">
+<p class="footer-disclaimer">
+<strong>Notice:</strong> Maa Enterprises is an independent cyber cafe and private online service facilitation center. We assist users with form filling, digital documentation, and resume preparation. We are not an official government agency or affiliated with any government department.
+        </p>
+<p>
+          © <span id="currentYear"></span> Maa Enterprises. All rights reserved.
+        </p>
+</div>
+</div>
+</footer>
+<!-- Production JavaScript Application Core -->
+<script src="js/app.js"></script>
+<!-- Firebase Modular Configuration & Centralized Auth Guard -->
+<script src="js/firebase-config.js" type="module"></script>
+<script src="js/auth.js" type="module"></script>
+<script src="js/services.js"></script></body>
+</html>

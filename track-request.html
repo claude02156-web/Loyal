@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Track Your Application — Maa Enterprises | Bihar Sharif</title>
+<meta content="Track your online service application status in real-time at Maa Enterprises Cyber Cafe &amp; Online Service Center, Bihar Sharif. Search by Request ID or registered mobile number." name="description"/>
+<meta content="Maa Enterprises Tracking, Track Application, Service Status, Cyber Cafe Bihar Sharif, Request ID" name="keywords"/>
+<meta content="Maa Enterprises" name="author"/>
+<!-- Favicon -->
+<link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+<!-- Google Fonts: Poppins & Roboto -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Global & Feature Stylesheets -->
+<link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/track-request.css">
+</head>
+<body>
+<!-- Accessibility Skip Link -->
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<!-- Ambient Glowing Background Canvas -->
+<div aria-hidden="true" class="bg-ambient-layer">
+<div class="ambient-grid"></div>
+<div class="ambient-orb orb-1"></div>
+<div class="ambient-orb orb-2"></div>
+<div class="ambient-orb orb-3"></div>
+</div>
+<!-- Toast Container -->
+<div aria-atomic="true" aria-live="polite" class="toast-container" id="toastContainer"></div>
+<!-- Header / Navigation -->
+<header class="site-header" id="siteHeader">
+<div class="container nav-container">
+<!-- Brand Logo -->
+<a aria-label="Maa Enterprises Homepage" class="brand" href="index.html">
+<div class="brand-icon">
+<svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</div>
+<div class="brand-info">
+<span class="brand-name">Maa Enterprises</span>
+<span class="brand-badge">Cyber Cafe &amp; Online Service Center</span>
+</div>
+</a>
+<!-- Desktop Navigation Menu -->
+<nav aria-label="Primary Navigation" class="desktop-nav">
+<a class="nav-link" href="index.html">Home</a>
+<a class="nav-link" href="services.html">Services</a>
+<a class="nav-link" href="resume-maker.html">Resume Maker</a>
+<a class="nav-link active" href="track-request.html">Track Request</a>
+<a class="nav-link" href="contact.html">Contact</a>
+</nav>
+<!-- Header Actions -->
+<div class="header-actions">
+<a class="btn btn-admin header-admin-btn" href="login.html">
+<svg fill="none" stroke="currentColor" stroke-width="2" style="width:16px;height:16px;" viewbox="0 0 24 24"><rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+<span>Admin Portal</span>
+</a>
+<!-- Mobile Hamburger Button -->
+<button aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation menu" class="nav-toggle" id="navToggle">
+<span></span>
+<span></span>
+<span></span>
+</button>
+</div>
+</div>
+</header>
+<!-- Mobile Navigation Drawer Backdrop -->
+<div aria-hidden="true" class="mobile-nav-backdrop" id="navBackdrop"></div>
+<!-- Mobile Navigation Drawer -->
+<aside aria-hidden="true" aria-label="Mobile Navigation" class="mobile-menu" id="mobileMenu">
+<div class="mobile-menu-header">
+<div class="brand-info">
+<span class="brand-name">Maa Enterprises</span>
+<span class="brand-badge">Cyber Cafe &amp; Service Center</span>
+</div>
+<button aria-label="Close navigation menu" class="mobile-menu-close" id="navClose">×</button>
+</div>
+<nav class="mobile-nav-links">
+<a class="mobile-nav-link" href="index.html">Home</a>
+<a class="mobile-nav-link" href="services.html">Services Catalog</a>
+<a class="mobile-nav-link" href="resume-maker.html">Resume Maker</a>
+<a class="mobile-nav-link active" href="track-request.html">Track Application</a>
+<a class="mobile-nav-link" href="contact.html">Contact Center</a>
+<a class="mobile-nav-link" href="login.html">Admin Portal</a>
+</nav>
+<div class="mobile-menu-footer">
+<div class="mobile-contact-pill">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span>Mahalpar, Bihar Sharif - 803101</span>
+</div>
+<div class="mobile-contact-pill">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>10:00 AM – 06:00 PM</span>
+</div>
+<a class="btn btn-whatsapp btn-sm" href="https://wa.me/919693125648" rel="noopener noreferrer" style="width: 100%; margin-top: 0.5rem;" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+        WhatsApp Us
+      </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main id="main-content">
+<div class="container" style="padding-top: 2rem; padding-bottom: 4rem;">
+<!-- Hero Section -->
+<section class="track-hero reveal">
+<div class="track-hero-content">
+<nav aria-label="Breadcrumbs" class="breadcrumb-nav" style="margin-bottom: 0.5rem;">
+<a href="index.html">Home</a>
+<span class="breadcrumb-separator">/</span>
+<span class="breadcrumb-current">Track Application</span>
+</nav>
+<h1 class="track-hero-title">
+            Track Your <span class="gradient-text">Application</span>
+</h1>
+<p class="track-hero-subtitle">
+            Check the live progress, verification stages, and milestone updates of your submitted service or trade request.
+          </p>
+</div>
+</section>
+<!-- Tracking Search Card -->
+<div class="tracking-search-container reveal delay-100">
+<div class="tracking-search-card">
+<!-- Search Type Segmented Tabs -->
+<div aria-label="Search criteria selector" class="search-type-selector" role="tablist">
+<button aria-selected="true" class="search-type-btn active" data-type="id" role="tab" type="button">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="16" rx="2" width="18" x="3" y="4"></rect><line x1="7" x2="17" y1="8" y2="8"></line><line x1="7" x2="17" y1="12" y2="12"></line><line x1="7" x2="12" y1="16" y2="16"></line></svg>
+<span>By Request ID</span>
+</button>
+<button aria-selected="false" class="search-type-btn" data-type="mobile" role="tab" type="button">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><rect height="20" rx="2" ry="2" width="14" x="5" y="2"></rect><line x1="12" x2="12.01" y1="18" y2="18"></line></svg>
+<span>By Mobile Number</span>
+</button>
+</div>
+<!-- Search Form -->
+<form id="trackingForm" novalidate="">
+<div class="track-input-group" id="trackInputGroup">
+<label for="trackSearchInput" id="trackInputLabel" style="font-size: 0.85rem; font-weight: 600; color: var(--text-primary);">Enter Your Acknowledgement / Request ID</label>
+<div class="track-input-wrapper">
+<svg class="track-input-icon" fill="none" id="trackInputIcon" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="11" cy="11" r="8"></circle>
+<line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+</svg>
+<input autocomplete="off" class="track-input" id="trackSearchInput" placeholder="e.g. MAE-7K29PX or TRADE-8M4K2P" required="" type="text"/>
+</div>
+<div class="track-error-text" id="trackErrorText"></div>
+</div>
+<button class="btn btn-primary" id="trackSubmitBtn" style="width: 100%; margin-top: 1.25rem; padding: 0.9rem 1.5rem;" type="submit">
+<span>Track Application</span>
+<svg fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24"><polyline points="9 18 15 12 9 6"></polyline></svg>
+</button>
+</form>
+</div>
+</div>
+<!-- Multiple Matches Result Area (Hidden initially) -->
+<section class="multiple-matches-container reveal" id="multipleMatchesArea" style="display: none;">
+<div class="matches-header">
+<h2 class="matches-title">Applications Found</h2>
+<span class="matches-count" id="matchesCount"></span>
+</div>
+<div id="matchesList" style="display: flex; flex-direction: column; gap: 0.85rem;">
+<!-- Dynamically populated -->
+</div>
+</section>
+<!-- Single Result Panel (Hidden initially) -->
+<section class="track-result-container reveal" id="trackResultArea" style="display: none;">
+<div class="track-result-card">
+<!-- Card Header -->
+<div class="result-header">
+<div class="result-id-group">
+<span class="result-type-tag" id="resultTypeTag">Standard Application</span>
+<span class="result-request-id" id="resultRequestId">MAA-XXXXXX</span>
+</div>
+<div class="status-badge status-badge-pending" id="resultStatusBadge">
+              Pending Verification
+            </div>
+</div>
+<!-- Rejection Notice Banner (Shown only when status is rejected) -->
+<div class="rejection-notice-box" id="resultRejectionCard" style="display: none;">
+<svg class="rejection-notice-icon" fill="none" height="24" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+<div class="rejection-notice-text">
+<strong>Notice:</strong> <span id="resultRejectionText">This application could not be processed.</span>
+</div>
+</div>
+<!-- 4-Step Visual Progress Timeline -->
+<div class="tracking-timeline-box">
+<div class="progress-timeline">
+<!-- Step 1 -->
+<div class="timeline-step step-completed">
+<div class="step-indicator">01</div>
+<div class="step-details">
+<span class="step-title">Request Submitted</span>
+<span class="step-desc">Application registered</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="timeline-step">
+<div class="step-indicator">02</div>
+<div class="step-details">
+<span class="step-title">Under Review</span>
+<span class="step-desc">Documents verified</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="timeline-step">
+<div class="step-indicator">03</div>
+<div class="step-details">
+<span class="step-title">In Processing</span>
+<span class="step-desc">Form / portal work</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="timeline-step">
+<div class="step-indicator">04</div>
+<div class="step-details">
+<span class="step-title">Completed</span>
+<span class="step-desc">Delivered / Receipt issued</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Public Metadata Grid -->
+<div class="result-meta-grid">
+<div class="meta-field">
+<span class="meta-field-label">Service / Requirement</span>
+<span class="meta-field-value" id="resultServiceName">Service Name</span>
+</div>
+<div class="meta-field">
+<span class="meta-field-label">Applicant / Organization</span>
+<span class="meta-field-value" id="resultCustomerName">Customer Name</span>
+</div>
+<div class="meta-field">
+<span class="meta-field-label">Registered Contact</span>
+<span class="meta-field-value" id="resultCustomerMobile">+91 96931 •••••</span>
+</div>
+<div class="meta-field">
+<span class="meta-field-label">Submission Date</span>
+<span class="meta-field-value" id="resultDate">19 Aug 2026</span>
+</div>
+<div class="meta-field">
+<span class="meta-field-label">Payment Status</span>
+<span class="meta-field-value" id="resultPaymentStatus">Pending</span>
+</div>
+</div>
+<!-- Public Staff Note (If present) -->
+<div class="public-note-card" id="resultPublicNoteCard" style="display: none;">
+<span class="public-note-label">Message from Center Staff</span>
+<p class="public-note-text" id="resultPublicNoteText"></p>
+</div>
+<!-- Actions Row -->
+<div class="result-action-row">
+<button class="btn btn-secondary btn-sm" id="resultRefreshBtn" type="button">
+<svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+<span>Refresh Status</span>
+</button>
+<a class="btn btn-whatsapp btn-sm" href="#" id="resultWhatsappBtn" rel="noopener noreferrer" target="_blank">
+<svg fill="none" height="16" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="16"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+<span>Contact Center on WhatsApp</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Not Found Error State (Hidden initially) -->
+<section class="track-not-found-card reveal" id="trackNotFoundArea" style="display: none;">
+<div class="not-found-icon-box">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="10"></circle>
+<line x1="12" x2="12" y1="8" y2="12"></line>
+<line x1="12" x2="12.01" y1="16" y2="16"></line>
+</svg>
+</div>
+<h2 class="not-found-title">Request Not Found</h2>
+<p class="not-found-desc">
+          We could not find an active application matching the provided details. Please verify your Request ID (e.g. MAA-XXXXXX or TRADE-XXXXXX) or ensure the 10-digit mobile number is correct.
+        </p>
+<button class="btn btn-outline" onclick="document.getElementById('trackSearchInput').focus();" type="button">
+<span>Check &amp; Try Again</span>
+</button>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<!-- Column 1: Brand & Bio -->
+<div class="footer-col">
+<div class="brand">
+<div class="brand-icon">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+<polyline points="22,6 12,13 2,6"></polyline>
+</svg>
+</div>
+<div class="brand-info">
+<span class="brand-name">Maa Enterprises</span>
+<span class="brand-badge">Cyber Cafe &amp; Online Services</span>
+</div>
+</div>
+<p class="footer-brand-desc">
+            Your neighborhood cyber cafe and online service facilitation center, providing transparent form processing and digital assistance.
+          </p>
+<div class="footer-timing-badge">
+<svg fill="none" height="14" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24" width="14"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+<span>Timing: 10:00 AM – 06:00 PM</span>
+</div>
+</div>
+<!-- Column 2: Quick Links -->
+<div class="footer-col">
+<h4 class="footer-col-title">Navigation</h4>
+<ul class="footer-links">
+<li><a class="footer-link" href="index.html">Home</a></li>
+<li><a class="footer-link" href="services.html">Services</a></li>
+<li><a class="footer-link" href="track-request.html">Track Application</a></li>
+<li><a class="footer-link" href="trade-request.html">Trade &amp; Bulk</a></li>
+<li><a class="footer-link" href="resume-maker.html">Resume Maker</a></li>
+<li><a class="footer-link" href="contact.html">Contact Us</a></li>
+<li><a class="footer-link" href="login.html" style="color: #c4b5fd;">Admin Portal</a></li>
+</ul>
+</div>
+<!-- Column 3: Contact Details -->
+<div class="footer-col">
+<h4 class="footer-col-title">Business Information</h4>
+<ul class="footer-contact-list">
+<li class="footer-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+<span><strong>Owner:</strong> Rajesh Kumar</span>
+</li>
+<li class="footer-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+<span>Mahalpar, Bihar Sharif, Nalanda, Bihar - 803101</span>
+</li>
+<li class="footer-contact-item">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+<a href="tel:9693125648" style="color: var(--accent-cyan);">+91 96931 25648</a>
+</li>
+</ul>
+</div>
+<!-- Column 4: Quick WhatsApp Contact -->
+<div class="footer-col">
+<h4 class="footer-col-title">Instant Support</h4>
+<p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.5;">
+            Have questions about a form or need immediate help with document verification?
+          </p>
+<a class="btn btn-whatsapp btn-sm" href="https://wa.me/919693125648" rel="noopener noreferrer" style="width: fit-content; margin-top: 0.25rem;" target="_blank">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            Chat on WhatsApp
+          </a>
+</div>
+</div>
+<!-- Footer Bottom & Disclaimer -->
+<div class="footer-bottom">
+<p class="footer-disclaimer">
+<strong>Notice:</strong> Maa Enterprises is an independent cyber cafe and private online service facilitation center. We assist users with form filling, digital documentation, and resume preparation. We are not an official government agency or affiliated with any government department.
+        </p>
+<p>
+          © <span id="currentYear"></span> Maa Enterprises. All rights reserved.
+        </p>
+</div>
+</div>
+</footer>
+<!-- Scripts -->
+<script src="js/app.js"></script>
+<script src="js/services.js"></script>
+<script src="js/apply.js"></script>
+<script src="js/track-request.js"></script>
+<!-- Firebase Modular Configuration & Centralized Auth Guard -->
+<script src="js/firebase-config.js" type="module"></script>
+<script src="js/auth.js" type="module"></script>
+</body>
+</html>

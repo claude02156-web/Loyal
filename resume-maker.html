@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Resume & Biodata Maker — Maa Enterprises | Bihar Sharif</title>
+  <meta content="Free, professional, and privacy-focused Job Resume / CV & Marriage Biodata Builder with live A4 preview, designer templates, and instant high-resolution PDF download." name="description"/>
+  <meta content="Resume Maker, CV Builder, Marriage Biodata, A4 PDF Resume, Job Resume, Maa Enterprises Bihar Sharif" name="keywords"/>
+  <meta content="Maa Enterprises" name="author"/>
+  
+  <!-- Favicon -->
+  <link href="assets/favicon.svg" rel="icon" type="image/svg+xml"/>
+  
+  <!-- Google Fonts: Poppins, Roboto, Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Poppins:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  
+  <!-- Stylesheets (Fully self-contained in resume.css) -->
+  <link href="css/global.css" rel="stylesheet"/>
+  <link href="css/resume-maker.css" rel="stylesheet"/>
+</head>
+<body class="resume-builder-page">
+  <!-- Accessibility Skip Link -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Ambient Glowing Background Canvas -->
+  <div aria-hidden="true" class="bg-ambient-layer">
+    <div class="ambient-grid"></div>
+    <div class="ambient-orb orb-1"></div>
+    <div class="ambient-orb orb-2"></div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div aria-atomic="true" aria-live="polite" class="builder-toast-container" id="toastContainer"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-container">
+      <!-- Brand Logo -->
+      <a aria-label="Maa Enterprises Homepage" class="brand" href="index.html">
+        <div class="brand-icon">
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-name">Maa Enterprises</span>
+          <span class="brand-badge">Resume &amp; Biodata Maker</span>
+        </div>
+      </a>
+      
+      <!-- Primary Navigation -->
+      <nav aria-label="Primary Navigation" class="desktop-nav">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link active" href="resume-maker.html">Resume &amp; Biodata</a>
+        <a class="nav-link" href="track-request.html">Track Request</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+
+      <!-- Header Actions -->
+      <div class="header-actions">
+        <button class="btn-tool" onclick="openModal('settingsModal')" title="Settings & Local Storage">
+          ⚙️ Settings
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Draft Recovery Banner -->
+  <div id="draftRecoveryBanner" style="display:none; background:rgba(37,99,235,0.2); border-bottom:1px solid rgba(37,99,235,0.4); padding:0.75rem 1rem; text-align:center; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap; font-size:0.9rem;">
+    <span>📝 An unfinished working draft was found in your browser.</span>
+    <button class="btn-tool btn-tool-primary" onclick="restoreDraft()">Restore Draft</button>
+    <button class="btn-tool" onclick="discardDraft()">Start Fresh</button>
+  </div>
+
+  <!-- Hero Module Switcher Section -->
+  <section class="builder-hero-section">
+    <div class="container">
+      <h1 class="builder-hero-title">Resume &amp; Biodata Maker</h1>
+      <p class="builder-hero-subtitle">Create Professional Resume, CV &amp; Marriage Biodata Easily</p>
+      
+      <div class="module-selector-cards">
+        <!-- Card 1: Job Resume -->
+        <div class="module-card active" id="cardModuleJob" onclick="switchModule('job')">
+          <div class="module-icon-badge">📄</div>
+          <h2 class="module-card-title">JOB RESUME / CV</h2>
+          <p class="module-card-desc">Create professional resumes for jobs, internships, government jobs, private jobs and professional applications.</p>
+          <span class="module-card-action">Create Job Resume →</span>
+        </div>
+        
+        <!-- Card 2: Marriage Biodata -->
+        <div class="module-card biodata" id="cardModuleBio" onclick="switchModule('biodata')">
+          <div class="module-icon-badge">💍</div>
+          <h2 class="module-card-title">MARRIAGE RESUME / BIODATA</h2>
+          <p class="module-card-desc">Create clean, professional and culturally appropriate marriage biodata.</p>
+          <span class="module-card-action">Create Marriage Biodata →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Builder Toolbar -->
+  <div class="builder-toolbar">
+    <div class="toolbar-inner">
+      <div class="toolbar-left">
+        <span class="badge-mode" id="activeModeBadge">Job Resume (LOW)</span>
+        <span class="autosave-badge" id="autosaveBadge">Saved ✓</span>
+        
+        <!-- Undo / Redo -->
+        <button class="btn-tool" id="btnUndo" onclick="undo()" title="Undo (Ctrl+Z)" disabled>↩ Undo</button>
+        <button class="btn-tool" id="btnRedo" onclick="redo()" title="Redo (Ctrl+Y)" disabled>↪ Redo</button>
+      </div>
+
+      <div class="toolbar-center">
+        <!-- Template & Design Modals -->
+        <button class="btn-tool" onclick="openModal('templatesModal')">🎨 Templates</button>
+        
+        <!-- Color Palette Dropdown/Dots -->
+        <div class="color-picker-group" id="paletteContainer"></div>
+        
+        <!-- Job Detail Level Toggle -->
+        <div id="jobLevelGroup" style="display:inline-flex; gap:2px; background:rgba(0,0,0,0.3); padding:2px; border-radius:6px;">
+          <button class="btn-tool btn-level-tab active" data-level="low" onclick="setDetailLevel('low')">Low Details</button>
+          <button class="btn-tool btn-level-tab" data-level="medium" onclick="setDetailLevel('medium')">Medium Details</button>
+          <button class="btn-tool btn-level-tab" data-level="high" onclick="setDetailLevel('high')">High Details</button>
+        </div>
+
+        <!-- Biodata Gender Toggle -->
+        <div id="bioGenderGroup" style="display:none; gap:2px; background:rgba(0,0,0,0.3); padding:2px; border-radius:6px;">
+          <button class="btn-tool btn-gender-tab active" data-gender="male" onclick="setBiodataGender('male')">Male Biodata</button>
+          <button class="btn-tool btn-gender-tab" data-gender="female" onclick="setBiodataGender('female')">Female Biodata</button>
+        </div>
+      </div>
+
+      <div class="toolbar-right">
+        <!-- Zoom Controls -->
+        <div class="zoom-controls">
+          <button class="btn-zoom" onclick="setZoom(previewZoom - 0.1)" title="Zoom Out">−</button>
+          <span class="zoom-level-text" id="zoomLevelText">85%</span>
+          <button class="btn-zoom" onclick="setZoom(previewZoom + 0.1)" title="Zoom In">+</button>
+        </div>
+
+        <!-- Mobile Switcher -->
+        <div class="mobile-view-toggle">
+          <button class="mobile-view-btn active" id="btnMobileEdit" onclick="toggleMobileView('editor')">Edit Form</button>
+          <button class="mobile-view-btn" id="btnMobilePrev" onclick="toggleMobileView('preview')">Live A4 Preview</button>
+        </div>
+
+        <!-- Primary Output Buttons -->
+        <button class="btn-tool" onclick="openFinalCheckModal()" title="Validate and inspect A4 Fit">🔍 Final Check</button>
+        <button class="btn-tool" onclick="printDocument()" title="Print directly to A4 paper">🖨️ Print</button>
+        <button class="btn-tool btn-tool-primary" id="btnDownloadPdf" onclick="downloadPDF()" title="Download High-Resolution PDF">📄 Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Builder Workspace -->
+  <main class="builder-workspace show-editor" id="builderWorkspace">
+    
+    <!-- LEFT COLUMN: Form Editor Panel -->
+    <section class="editor-panel" id="main-content" aria-label="Editor Form">
+      
+      <!-- ================================================================= -->
+      <!-- A. JOB RESUME FORM ACCORDIONS -->
+      <!-- ================================================================= -->
+      <div id="jobResumeFormContainer">
+        
+        <!-- 1. Personal Details Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">👤</div>
+              <h2 class="card-title">Personal Details</h2>
+            </div>
+            <div class="card-header-actions">
+              <span class="card-badge">Basic</span>
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <!-- Photo Upload Box -->
+            <div class="photo-uploader-box">
+              <div class="photo-preview-avatar">
+                <span>No Photo</span>
+              </div>
+              <div class="photo-uploader-actions">
+                <label class="btn-tool btn-tool-primary" style="cursor:pointer;">
+                  📷 Upload Photo
+                  <input type="file" accept="image/*" style="display:none;" onchange="handlePhotoUpload(this)">
+                </label>
+                <button type="button" class="btn-tool btn-tool-danger" onclick="removePhoto()">Remove</button>
+              </div>
+            </div>
+
+            <!-- Personal Fields Grid -->
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="jobFullName" placeholder="e.g. Rahul Kumar">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Mobile Number</label>
+                <input type="tel" class="form-control" id="jobMobile" placeholder="e.g. 9693125648">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">WhatsApp Number <span class="opt-tag">(Optional)</span></label>
+                <input type="tel" class="form-control" id="jobWhatsapp" placeholder="e.g. 9693125648">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="jobEmail" placeholder="e.g. rahul@example.com">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="jobDob">
+              </div>
+              
+              <div class="form-group full-width">
+                <label class="form-label">Address / Location</label>
+                <input type="text" class="form-control" id="jobAddress" placeholder="e.g. Mahalpar, Bihar Sharif, Nalanda - 803101">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Father's Name <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="jobFatherName" placeholder="e.g. Shri Rajesh Kumar">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Mother's Name <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="jobMotherName" placeholder="e.g. Smt. Anita Devi">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Gender <span class="opt-tag">(Optional)</span></label>
+                <select class="form-control" id="jobGender">
+                  <option value="">-- Select Gender --</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Nationality <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="jobNationality" placeholder="e.g. Indian">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Marital Status <span class="opt-tag">(Optional)</span></label>
+                <select class="form-control" id="jobMaritalStatus">
+                  <option value="">-- Select Status --</option>
+                  <option value="Unmarried">Unmarried</option>
+                  <option value="Married">Married</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Languages Known <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="jobLanguages" placeholder="e.g. Hindi, English">
+              </div>
+              
+              <div class="form-group full-width">
+                <label class="form-label">Hobbies <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="jobHobbies" placeholder="e.g. Reading, Coding, Cricket">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Career Objective Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">🎯</div>
+              <h2 class="card-title">Career Objective</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-tool" type="button" onclick="openObjectiveModal()">📚 Predefined Library</button>
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="form-group">
+              <textarea class="form-control" id="jobObjectiveInput" placeholder="Write or select your career objective..."></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Education Qualifications Accordion (NO MARKS/PERCENTAGE) -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">🎓</div>
+              <h2 class="card-title">Education Qualifications</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <!-- Quick Preset Pills -->
+            <div class="quick-presets-row">
+              <span style="font-size:0.75rem; color:var(--builder-text-muted);">Quick Add:</span>
+              <button type="button" class="preset-chip" onclick="addEducationEntry('10th / Matriculation')">+ 10th</button>
+              <button type="button" class="preset-chip" onclick="addEducationEntry('12th / Intermediate')">+ 12th</button>
+              <button type="button" class="preset-chip" onclick="addEducationEntry('Graduation / B.Tech / B.Sc')">+ Graduation</button>
+              <button type="button" class="preset-chip" onclick="addEducationEntry('Diploma / ITI')">+ Diploma</button>
+              <button type="button" class="preset-chip" onclick="addEducationEntry('Post Graduation')">+ PG</button>
+            </div>
+
+            <div class="dynamic-list-container" id="eduListContainer"></div>
+            <button type="button" class="btn-add-repeatable" onclick="addEducationEntry()">+ Add Custom Qualification</button>
+          </div>
+        </div>
+
+        <!-- 4. Professional Qualification Accordion -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">📜</div>
+              <h2 class="card-title">Professional Qualification</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="dynamic-list-container" id="proqListContainer"></div>
+            <button type="button" class="btn-add-repeatable" onclick="addProQualEntry()">+ Add Professional Qualification</button>
+          </div>
+        </div>
+
+        <!-- 5. Extra Qualification & Skills Accordion -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">💡</div>
+              <h2 class="card-title">Extra Qualification &amp; Courses</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="quick-presets-row">
+              <button type="button" class="preset-chip" onclick="addExtraQualEntry('CCC (Course on Computer Concepts)')">+ CCC</button>
+              <button type="button" class="preset-chip" onclick="addExtraQualEntry('Basic Computer Knowledge')">+ Basic Computer</button>
+              <button type="button" class="preset-chip" onclick="addExtraQualEntry('MS Office & Excel')">+ MS Office</button>
+              <button type="button" class="preset-chip" onclick="addExtraQualEntry('Tally ERP 9 / Prime')">+ Tally</button>
+              <button type="button" class="preset-chip" onclick="addExtraQualEntry('DCA / ADCA')">+ ADCA</button>
+              <button type="button" class="preset-chip" onclick="addExtraQualEntry('English & Hindi Typing')">+ Typing</button>
+            </div>
+            <div class="dynamic-list-container" id="extListContainer"></div>
+            <button type="button" class="btn-add-repeatable" onclick="addExtraQualEntry()">+ Add Custom Extra Qualification</button>
+          </div>
+        </div>
+
+        <!-- 6. Work Experience Accordion -->
+        <div class="editor-card" id="jobExpCard">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">💼</div>
+              <h2 class="card-title">Work Experience</h2>
+            </div>
+            <div class="card-header-actions">
+              <label style="font-size:0.75rem; display:inline-flex; align-items:center; gap:4px; margin-right:8px; cursor:pointer;">
+                <input type="checkbox" id="jobFresherCheck"> I am a Fresher
+              </label>
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="dynamic-list-container" id="expListContainer"></div>
+            <button type="button" class="btn-add-repeatable" onclick="addExperienceEntry()">+ Add Work Experience</button>
+          </div>
+        </div>
+
+        <!-- 7. Projects Accordion -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">🚀</div>
+              <h2 class="card-title">Projects</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="dynamic-list-container" id="projListContainer"></div>
+            <button type="button" class="btn-add-repeatable" onclick="addProjectEntry()">+ Add Project</button>
+          </div>
+        </div>
+
+        <!-- 8. Key Skills & Technical Skills -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">⚡</div>
+              <h2 class="card-title">Skills &amp; Strengths</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <!-- Key Skills -->
+            <div class="form-group" style="margin-bottom:1rem;">
+              <label class="form-label">Key Skills / Technical Skills</label>
+              <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+                <input type="text" class="form-control" id="skillInputBox" placeholder="Type skill (e.g. JavaScript, Accounting, Communication)">
+                <button type="button" class="btn-tool btn-tool-primary" onclick="addTag('skills', 'skillInputBox')">Add</button>
+              </div>
+              <div class="tag-container" id="skillsTagContainer"></div>
+            </div>
+
+            <!-- Strengths -->
+            <div class="form-group">
+              <label class="form-label">Strengths</label>
+              <div style="display:flex; gap:0.5rem; margin-bottom:0.5rem;">
+                <input type="text" class="form-control" id="strengthInputBox" placeholder="e.g. Hardworking, Quick Learner, Team Player">
+                <button type="button" class="btn-tool btn-tool-primary" onclick="addTag('strengths', 'strengthInputBox')">Add</button>
+              </div>
+              <div class="tag-container" id="strengthsTagContainer"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 9. Certifications Accordion -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">🏆</div>
+              <h2 class="card-title">Certifications &amp; Achievements</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="dynamic-list-container" id="certListContainer"></div>
+            <button type="button" class="btn-add-repeatable" onclick="addCertificationEntry()">+ Add Certification</button>
+          </div>
+        </div>
+
+        <!-- 10. Declaration & Footer Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">✍️</div>
+              <h2 class="card-title">Declaration &amp; Footer</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-tool" type="button" onclick="openDeclarationModal()">📜 Declarations</button>
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="form-group" style="margin-bottom:0.9rem;">
+              <label class="form-label">Declaration Statement</label>
+              <textarea class="form-control" id="jobDeclarationInput"></textarea>
+            </div>
+            <div class="form-grid-3">
+              <div class="form-group">
+                <label class="form-label">Place</label>
+                <input type="text" class="form-control" id="jobPlaceInput" placeholder="e.g. Bihar Sharif">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" id="jobDateInput">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Signature / Name</label>
+                <input type="text" class="form-control" id="jobSignatureInput" placeholder="Candidate Name">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ================================================================= -->
+      <!-- B. MARRIAGE BIODATA FORM ACCORDIONS -->
+      <!-- ================================================================= -->
+      <div id="marriageBiodataFormContainer" style="display:none;">
+        
+        <!-- 1. Basic Details Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">👤</div>
+              <h2 class="card-title">Basic &amp; Personal Details</h2>
+            </div>
+            <div class="card-header-actions">
+              <span class="card-badge">Biodata</span>
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <!-- Photo Upload Box -->
+            <div class="photo-uploader-box">
+              <div class="photo-preview-avatar">
+                <span>No Photo</span>
+              </div>
+              <div class="photo-uploader-actions">
+                <label class="btn-tool btn-tool-primary" style="cursor:pointer;">
+                  📷 Upload Profile Photo
+                  <input type="file" accept="image/*" style="display:none;" onchange="handlePhotoUpload(this)">
+                </label>
+                <button type="button" class="btn-tool btn-tool-danger" onclick="removePhoto()">Remove</button>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="bioFullName" placeholder="e.g. Pooja Sharma / Rahul Raj">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" id="bioDob">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Age</label>
+                <input type="text" class="form-control" id="bioAge" placeholder="e.g. 24 Years">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Height</label>
+                <input type="text" class="form-control" id="bioHeight" placeholder="e.g. 5 ft 6 in">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Weight <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="bioWeight" placeholder="e.g. 60 kg">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Religion</label>
+                <input type="text" class="form-control" id="bioReligion" placeholder="e.g. Hindu">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Caste</label>
+                <input type="text" class="form-control" id="bioCaste" placeholder="e.g. Sharma / Gupta">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Sub-Caste <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="bioSubCaste" placeholder="e.g. Kasaudhan / Gour">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Gotra <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="bioGotra" placeholder="e.g. Kashyap">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Manglik Status</label>
+                <select class="form-control" id="bioManglik">
+                  <option value="None">None / Not Applicable</option>
+                  <option value="No">No (Non-Manglik)</option>
+                  <option value="Yes">Yes (Manglik)</option>
+                  <option value="Anshik / Partial">Anshik / Partial Manglik</option>
+                  <option value="Don't Know">Don't Know</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Mother Tongue</label>
+                <input type="text" class="form-control" id="bioMotherTongue" placeholder="e.g. Hindi / Maithili">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Complexion <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="bioComplexion" placeholder="e.g. Fair / Wheatish">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Blood Group <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="bioBloodGroup" placeholder="e.g. O+, B+">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Marital Status</label>
+                <select class="form-control" id="bioMaritalStatus">
+                  <option value="Never Married">Never Married</option>
+                  <option value="Awaiting Divorce">Awaiting Divorce</option>
+                  <option value="Divorced">Divorced</option>
+                  <option value="Widowed">Widowed</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Birth Place</label>
+                <input type="text" class="form-control" id="bioBirthPlace" placeholder="e.g. Bihar Sharif">
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label">Birth Time <span class="opt-tag">(Optional)</span></label>
+                <input type="time" class="form-control" id="bioBirthTime">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Profession & Education Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">💼</div>
+              <h2 class="card-title">Professional &amp; Education Details</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Occupation / Profession</label>
+                <input type="text" class="form-control" id="bioOccupation" placeholder="e.g. Software Engineer / Govt Teacher / Business">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Job Title / Designation</label>
+                <input type="text" class="form-control" id="bioJobTitle" placeholder="e.g. Senior Analyst">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Company / Organization</label>
+                <input type="text" class="form-control" id="bioCompany" placeholder="e.g. TCS / SBPDCL / Maa Enterprises">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Work Location</label>
+                <input type="text" class="form-control" id="bioWorkLocation" placeholder="e.g. Patna / Bangalore">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Monthly / Annual Income <span class="opt-tag">(Optional)</span></label>
+                <input type="text" class="form-control" id="bioIncome" placeholder="e.g. 8 LPA / 60,000 per month">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Family Details Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">👨‍👩‍👧‍👦</div>
+              <h2 class="card-title">Family Details &amp; Siblings</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Father's Name</label>
+                <input type="text" class="form-control" id="bioFatherName" placeholder="e.g. Shri Rajesh Sharma">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Father's Occupation</label>
+                <input type="text" class="form-control" id="bioFatherOcc" placeholder="e.g. Businessman / Govt Employee">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Mother's Name</label>
+                <input type="text" class="form-control" id="bioMotherName" placeholder="e.g. Smt. Sunita Sharma">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Mother's Occupation</label>
+                <input type="text" class="form-control" id="bioMotherOcc" placeholder="e.g. Homemaker">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Family Type</label>
+                <select class="form-control" id="bioFamilyType">
+                  <option value="Nuclear">Nuclear Family</option>
+                  <option value="Joint">Joint Family</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Current Family Location</label>
+                <input type="text" class="form-control" id="bioFamilyLoc" placeholder="e.g. Mahalpar, Bihar Sharif">
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Native Place / Ancestral Town</label>
+                <input type="text" class="form-control" id="bioNativePlace" placeholder="e.g. Nalanda, Bihar">
+              </div>
+            </div>
+
+            <!-- Brothers -->
+            <div style="margin-top:1rem; border-top:1px dashed var(--builder-card-border); padding-top:0.75rem;">
+              <label class="form-label">Brothers</label>
+              <div class="dynamic-list-container" id="brothersListContainer"></div>
+              <button type="button" class="btn-add-repeatable" onclick="addBrotherEntry()">+ Add Brother</button>
+            </div>
+
+            <!-- Sisters -->
+            <div style="margin-top:1rem; border-top:1px dashed var(--builder-card-border); padding-top:0.75rem;">
+              <label class="form-label">Sisters</label>
+              <div class="dynamic-list-container" id="sistersListContainer"></div>
+              <button type="button" class="btn-add-repeatable" onclick="addSisterEntry()">+ Add Sister</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Contact Details Accordion -->
+        <div class="editor-card open">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">📞</div>
+              <h2 class="card-title">Contact Information</h2>
+            </div>
+            <div class="card-header-actions">
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body">
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Contact Person Name</label>
+                <input type="text" class="form-control" id="bioContactPerson" placeholder="e.g. Shri Rajesh Sharma (Father)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Primary Mobile Number</label>
+                <input type="tel" class="form-control" id="bioMobile" placeholder="e.g. 9693125648">
+              </div>
+              <div class="form-group">
+                <label class="form-label">WhatsApp Number <span class="opt-tag">(Optional)</span></label>
+                <input type="tel" class="form-control" id="bioWhatsapp" placeholder="e.g. 9693125648">
+              </div>
+              <div class="form-group full-width">
+                <label class="form-label">Residential Address</label>
+                <input type="text" class="form-control" id="bioAddress" placeholder="e.g. Mahalpar, Near Devi Sthan, Bihar Sharif, Nalanda">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Horoscope / Kundali (Optional Toggle) -->
+        <div class="editor-card">
+          <div class="editor-card-header">
+            <div class="card-title-group">
+              <div class="card-icon">🔮</div>
+              <h2 class="card-title">Horoscope / Kundali Details</h2>
+            </div>
+            <div class="card-header-actions">
+              <label style="font-size:0.75rem; display:inline-flex; align-items:center; gap:4px; margin-right:8px; cursor:pointer;">
+                <input type="checkbox" id="bioShowHoroscope"> Include Horoscope
+              </label>
+              <button class="btn-toggle-accordion" type="button">▼</button>
+            </div>
+          </div>
+          <div class="editor-card-body" id="bioHoroscopeCard" style="display:none;">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label">Rashi (Moon Sign)</label>
+                <input type="text" class="form-control" id="bioRashi" placeholder="e.g. Mesh / Vrishabh">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Nakshatra</label>
+                <input type="text" class="form-control" id="bioNakshatra" placeholder="e.g. Rohini / Ashwini">
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- RIGHT COLUMN: Live A4 Preview Panel -->
+    <section class="preview-panel" aria-label="A4 Preview">
+      
+      <!-- Preview Header Toolbar -->
+      <div class="preview-toolbar">
+        <div class="preview-title-group">
+          <strong>Live A4 Preview</strong>
+          <span class="preview-badge-status" id="overflowStatusBadge">Fits 1 Page ✓</span>
+        </div>
+        
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <button type="button" class="btn-tool btn-tool-primary" id="btnFitOnePage" style="display:none;" onclick="fitToOnePage()">
+            ⚡ Fit to One Page
+          </button>
+        </div>
+      </div>
+
+      <!-- Canvas Viewport with responsive zoom -->
+      <div class="preview-canvas-viewport">
+        <div class="preview-scale-wrapper" id="previewScaleWrapper">
+          <div id="a4PageCanvas" class="a4-page tpl-classic">
+            <!-- Rendered A4 Document Injected Dynamically -->
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- MODALS & DRAWERS -->
+  <!-- ===================================================================== -->
+
+  <!-- 1. Generic Dynamic Entry Editor Modal -->
+  <div class="builder-modal-backdrop" id="entryEditorModal">
+    <div class="builder-modal">
+      <div class="modal-header">
+        <h3 class="modal-title" id="entryEditorTitle">Edit Entry</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('entryEditorModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="entryEditorBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="closeModal('entryEditorModal')">Cancel</button>
+        <button type="button" class="btn-tool btn-tool-primary" onclick="saveModalEntry()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Photo Cropper Modal -->
+  <div class="builder-modal-backdrop" id="photoCropperModal">
+    <div class="builder-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Crop &amp; Position Photo</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('photoCropperModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="cropper-container">
+          <div class="cropper-canvas-wrap">
+            <canvas id="cropCanvas" width="280" height="280"></canvas>
+          </div>
+          <div style="width:100%; max-width:280px;">
+            <label class="form-label" style="justify-content:center; margin-bottom:4px;">Zoom / Scale</label>
+            <input type="range" class="form-control" id="cropZoomSlider" min="0.5" max="3" step="0.05" value="1">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="closeModal('photoCropperModal')">Cancel</button>
+        <button type="button" class="btn-tool btn-tool-primary" onclick="applyCroppedPhoto()">Crop &amp; Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Predefined Career Objectives Modal -->
+  <div class="builder-modal-backdrop" id="objectiveLibraryModal">
+    <div class="builder-modal wide">
+      <div class="modal-header">
+        <h3 class="modal-title">Career Objective Library</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('objectiveLibraryModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.85rem; color:var(--builder-text-muted); margin-bottom:1rem;">
+          Select one or multiple objectives to combine and insert into your resume.
+        </p>
+        <div id="objectiveList"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="closeModal('objectiveLibraryModal')">Cancel</button>
+        <button type="button" class="btn-tool btn-tool-primary" onclick="applySelectedObjectives()">Combine &amp; Insert</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Predefined Declarations Modal -->
+  <div class="builder-modal-backdrop" id="declarationLibraryModal">
+    <div class="builder-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Declaration Statements</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('declarationLibraryModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div id="declarationList"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="closeModal('declarationLibraryModal')">Cancel</button>
+        <button type="button" class="btn-tool btn-tool-primary" onclick="applySelectedDeclaration()">Use Declaration</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Templates Browser Modal (12 Job + 10 Marriage Templates) -->
+  <div class="builder-modal-backdrop" id="templatesModal">
+    <div class="builder-modal wide">
+      <div class="modal-header">
+        <h3 class="modal-title">Choose Design Template</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('templatesModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="templates-grid" id="templatesBrowserGrid"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="closeModal('templatesModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Final Check Modal -->
+  <div class="builder-modal-backdrop" id="finalCheckModal">
+    <div class="builder-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Final Document Verification</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('finalCheckModal')">&times;</button>
+      </div>
+      <div class="modal-body" id="finalCheckBody"></div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="fitToOnePage()">⚡ Auto-Fit Spacing</button>
+        <button type="button" class="btn-tool" onclick="printDocument()">🖨️ Print Now</button>
+        <button type="button" class="btn-tool btn-tool-primary" onclick="downloadPDF(); closeModal('finalCheckModal');">📄 Download PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. Settings & Storage Modal -->
+  <div class="builder-modal-backdrop" id="settingsModal">
+    <div class="builder-modal">
+      <div class="modal-header">
+        <h3 class="modal-title">Settings &amp; Storage Management</h3>
+        <button type="button" class="btn-close-modal" onclick="closeModal('settingsModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; flex-direction:column; gap:1rem;">
+          <div>
+            <h4 style="margin:0 0 0.4rem; font-size:0.95rem;">Reset Current Document</h4>
+            <p style="font-size:0.85rem; color:var(--builder-text-muted); margin:0 0 0.6rem;">Clears only the currently active document back to an empty blank state.</p>
+            <button type="button" class="btn-tool" onclick="resetCurrentDocument(); closeModal('settingsModal');">Reset Document</button>
+          </div>
+          <hr style="border:none; border-top:1px solid var(--builder-card-border);">
+          <div>
+            <h4 style="margin:0 0 0.4rem; font-size:0.95rem; color:#f87171;">Delete All Local Data</h4>
+            <p style="font-size:0.85rem; color:var(--builder-text-muted); margin:0 0 0.6rem;">Permanently deletes all cached drafts and settings for this browser.</p>
+            <button type="button" class="btn-tool btn-tool-danger" onclick="deleteAllLocalData()">Delete All Local Data</button>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-tool" onclick="closeModal('settingsModal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- html2pdf.js Client-Side Library Bundle -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  
+  <!-- Core Builder JavaScript -->
+  <script src="js/resume-maker.js"></script>
+</body>
+</html>
