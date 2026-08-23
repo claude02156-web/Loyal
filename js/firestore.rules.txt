@@ -1,0 +1,117 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: Check if request is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper: Strict Admin Verification
+    // Authenticated user UID must exist in 'admins' collection with active == true and role == 'admin'
+    function isAdmin() {
+      return isAuthenticated() 
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid))
+        && get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.active == true
+        && get(/databases/$(database)/documents/admins/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    // 1. Admins Collection:
+    // Only verified authenticated admins can read their own profile document.
+    // Client-side write (create, update, delete) is strictly FORBIDDEN to prevent privilege escalation.
+    match /admins/{adminUid} {
+      allow read: if isAuthenticated() && request.auth.uid == adminUid;
+      allow write: if false;
+    }
+
+    // 2. Services Catalog (Dynamic Catalog & Homepage Ordering):
+    // Public can read all active services; only authorized Admin can create, edit, reorder, or delete.
+    match /services/{serviceId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 3. FAQs Collection (Homepage Accordion):
+    // Public can read FAQs; only authorized Admin can create, edit, or delete.
+    match /faqs/{faqId} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // 4. Center & Website Settings:
+    // Public can read public verified business information; only authorized Admin can modify settings.
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // 5. Customer Service Requests (Applications):
+    // Public users can submit new service requests with strict field validation.
+    // Malicious users cannot inject admin status or payment clearance on creation.
+    // Tracking is restricted: public can 'get' an individual request by exact ID, but cannot 'list'/scrape all requests.
+    // Only authorized Admin can list all requests, update status/payments/notes, or delete.
+    match /requests/{requestId} {
+      allow create: if request.resource.data.fullName is string
+                    && request.resource.data.fullName.size() >= 2
+                    && request.resource.data.mobile is string
+                    && request.resource.data.mobile.size() >= 10
+                    && request.resource.data.serviceName is string
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.paymentStatus == 'pending';
+      allow get: if true;
+      allow list: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // Legacy 'applications' alias
+    match /applications/{appId} {
+      allow create: if request.resource.data.fullName is string
+                    && request.resource.data.mobile is string
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.paymentStatus == 'pending';
+      allow get: if true;
+      allow list: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // 6. Trade & Bulk Commercial Requests:
+    // Public can submit trade inquiries with status='pending'.
+    // Only Admin can list all trade requests, update status, or delete.
+    match /tradeRequests/{tradeId} {
+      allow create: if request.resource.data.organizationName is string
+                    && request.resource.data.mobile is string
+                    && request.resource.data.status == 'pending'
+                    && request.resource.data.paymentStatus == 'pending';
+      allow get: if true;
+      allow list: if isAdmin();
+      allow update, delete: if isAdmin();
+    }
+
+    // 7. Contact Inquiries / Messages:
+    // Public can submit contact messages.
+    // Only authorized Admin can read, list, update status, or delete messages.
+    match /inquiries/{inquiryId} {
+      allow create: if request.resource.data.name is string
+                    && request.resource.data.phone is string
+                    && request.resource.data.message is string;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // 8. Resumes Collection:
+    // Users can create and retrieve their resume by ID; only Admin can list all resumes or delete.
+    match /resumes/{resumeId} {
+      allow create: if true;
+      allow get: if true;
+      allow list, update, delete: if isAdmin();
+    }
+
+    // 9. Customer User Profiles Directory:
+    // Only Admin can read directory; customer self-managed or admin managed.
+    match /users/{userId} {
+      allow read: if (isAuthenticated() && request.auth.uid == userId) || isAdmin();
+      allow create, update: if (isAuthenticated() && request.auth.uid == userId) || isAdmin();
+      allow delete: if isAdmin();
+    }
+
+  }
+}
