@@ -34,14 +34,13 @@ import {
 
 // Production Firebase Configuration from User Project: maa-enterprise-0
 const firebaseConfig = {
-  apiKey: "AIzaSyBsnW3EuHBiz8_Fd0Hp0cRH5tPUSRmPFz4",
-  authDomain: "maa-enterprise-0.firebaseapp.com",
-  projectId: "maa-enterprise-0",
-  storageBucket: "maa-enterprise-0.firebasestorage.app",
-  messagingSenderId: "645401929017",
-  appId: "1:645401929017:web:5590b92ad75dd358e0b4e8"
+  apiKey: "AIzaSyCAiYD-GqiUGSzZgSzUYraaJVu8pY4L8sg",
+  authDomain: "maa-enterprises-99.firebaseapp.com",
+  projectId: "maa-enterprises-99",
+  storageBucket: "maa-enterprises-99.firebasestorage.app",
+  messagingSenderId: "197945908689",
+  appId: "1:197945908689:web:9b02be3a4e1ac97bd414f0"
 };
-
 let app = null;
 let auth = null;
 let db = null;
